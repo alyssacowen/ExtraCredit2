@@ -1,0 +1,52 @@
+
+package com.mycompany.csc229extracredit2;
+
+/**
+ *
+ * @author alyss
+ */
+public class CSC229ExtraCredit2 {
+public static double findRatio(int[] a) {
+    int largest1 = Integer.MIN_VALUE;
+    int largest2 = Integer.MIN_VALUE; 
+    int smallest1 = Integer.MAX_VALUE;
+    int smallest2 = Integer.MAX_VALUE;
+    double sumLargest = 0;
+    double sumSmallest = 0;
+
+    
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] < smallest1) {
+            smallest2 = smallest1;
+            smallest1 = a[i];
+        } else if (a[i] < smallest2) {
+            smallest2 = a[i];
+        }
+        if (a[i] > largest1) {
+            largest2 = largest1;
+            largest1 = a[i];
+        } else if (a[i] > largest2) {
+            largest2 = a[i];
+        }
+        
+    }
+
+    sumLargest = (double) largest2 + largest1;
+    sumSmallest = (double) smallest2 + smallest1;
+
+    return sumLargest / sumSmallest;
+}
+
+public static void main(String[] args) {
+    //The ratio should be 160
+    //The two largest numbers are 1000 and 920 
+    //The two smallest numbers are 7 and 5
+    // 1000 + 920 = 1,920
+    //7 + 5 = 12
+    // 1,920 divided by 12 is 160
+    int[] a={75,226,5,920,7,444,23,1000};
+    double ratio = findRatio(a);
+    System.out.println("Ratio: " + ratio);
+}
+}
+    
